@@ -22,7 +22,6 @@ class user extends Controller
         ];
         echo view('templates/wrapper', $data);
     }
-
     public function regis(){
         helper(['form', 'url', 'date']);
 
@@ -39,7 +38,8 @@ class user extends Controller
         ];
 
         $save = $userModel->insert($data);
-       
+        $session = session();
+        session()->setFlashdata('message', 'selamat registrasi berhasil');
         return redirect() -> to(base_url('user'));
     }
     
